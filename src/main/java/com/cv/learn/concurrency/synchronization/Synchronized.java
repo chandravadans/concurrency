@@ -29,11 +29,8 @@ public class Synchronized {
         t1.join();
         t2.join();
 
-        System.out.println("Count is " + count);
-        if (count == 200000) {
-            System.out.println("Passed!");
-        } else {
-            System.out.println("Failed!");
+        if (count != 200000) {
+            throw new RuntimeException("Failed! Count isn't 200000. Its " + count);
         }
     }
 }
