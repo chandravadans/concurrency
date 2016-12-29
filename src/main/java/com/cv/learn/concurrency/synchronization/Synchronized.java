@@ -3,9 +3,20 @@ package com.cv.learn.concurrency.synchronization;
 public class Synchronized {
     private int count = 0;
 
+    public synchronized void increment() {
+        count++;
+    }
+
+    public void resetCount() {
+        count = 0;
+    }
+
     public static void main(String[] args) throws InterruptedException {
         Synchronized s = new Synchronized();
-        s.doStuff();
+        for (int i = 0; i < 100; i++) {
+            s.doStuff();
+            s.resetCount();
+        }
 
     }
 
@@ -13,12 +24,12 @@ public class Synchronized {
 
         Thread t1 = new Thread(() -> {
             for (int i = 0; i < 100000; i++)
-                count++;
+                increment();
         });
 
         Thread t2 = new Thread(() -> {
             for (int i = 0; i < 100000; i++)
-                count++;
+                increment();
         });
 
         //starting both threads
