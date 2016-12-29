@@ -3,7 +3,9 @@ package com.cv.learn.concurrency.synchronization;
 import java.util.Scanner;
 
 class Processor extends Thread {
-    private boolean running = true;
+    //Using volatile to prevent caching of variables that are not modified by a running thread on some JVM
+    //implementations
+    private volatile boolean running = true;
     @Override
     public void run() {
         while (running) {
