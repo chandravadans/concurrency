@@ -21,9 +21,11 @@ public class Synchronized {
                 count++;
         });
 
+        //starting both threads
         t1.start();
         t2.start();
 
+        //join() waits for threads to finish
         t1.join();
         t2.join();
 
