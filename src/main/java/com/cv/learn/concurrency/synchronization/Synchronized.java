@@ -13,6 +13,7 @@ public class Synchronized {
 
     public static void main(String[] args) throws InterruptedException {
         Synchronized s = new Synchronized();
+        //Testing if exceptions come up by running it multiple times
         for (int i = 0; i < 100; i++) {
             s.doStuff();
             s.resetCount();
